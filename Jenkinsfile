@@ -17,7 +17,7 @@ pipeline {
             steps {
                 checkout([
                  $class: 'GitSCM',
-                 branches: [[name: 'master']],
+                 branches: [[name: 'main']],
                  userRemoteConfigs: [[
                     url: 'https://github.com/DmitrySmetyukhov/node_mongo_mongo-express_docker.git',
                     credentialsId: '',
