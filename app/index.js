@@ -72,9 +72,9 @@ const addMockUser = async () => {
     try {
         const newUser = new User({userId: 1, name: 'testUser1'});
         await newUser.save();
-        res.status(200).json({ message: 'User saved successfully' });
+        console.log('User saved successfully');
     } catch (err) {
-        res.status(500).json({ message: 'Error saving data' });
+        console.log('Error saving data' );
     }
 };
 
