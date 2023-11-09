@@ -2,6 +2,3 @@
 
 1. pull docker-compose.yaml
 2. run docker-compose up
-
-
-
