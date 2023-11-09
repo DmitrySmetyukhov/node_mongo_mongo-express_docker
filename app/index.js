@@ -16,8 +16,10 @@ mongoose.connect('mongodb://admin:password@mongodb:27017/my-db', {
 const db = mongoose.connection;
 
 db.on('error', (e) => console.log("Connection error ", e));
-db.once('open', function () {
+db.once('open', async function () {
     console.log('Connected to MongoDB');
+    await addMockUser();
+    console.log('mock user added.')
 });
 
 // Define a schema and model for your data
@@ -66,7 +68,7 @@ app.post('/update-profile', async (req, res) => {
     }
 });
 
-app.post('/add-data', async (req, res) => {
+const addMockUser = async () => {
     try {
         const newUser = new User({userId: 1, name: 'testUser1'});
         await newUser.save();
@@ -74,7 +76,7 @@ app.post('/add-data', async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: 'Error saving data' });
     }
-});
+};
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
